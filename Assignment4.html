@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var ratingData = [
+                {
+                    restaurant: 'KFC',
+                    rating:5
+                },
+                {
+                    restaurant: 'Burger King',
+                     rating:4
+                },
+                {
+                 restaurant: 'KFC',
+                 rating:3
+                },
+                {
+                    restaurant: 'Domino', 
+                    rating:2
+                },
+                {
+                    restaurant: 'Subway',
+                     rating:3
+                },
+                {
+                    restaurant: 'Domino', 
+                    rating:1
+                },
+                {
+                    restaurant: 'Subway', 
+                    rating:4
+                },
+                {
+                    restaurant: 'Pizza Hut', 
+                    rating:5
+                }
+                ]
+
+        //a) Calculate the Average rating for all the restaurants.
+
+const uniqueRestaurants = Array.from(new Set(ratingData.map(({restaurant}) => restaurant))); // Restaurant Names ['KFC', 'Burger king', 'dominos',subway]
+var arr = [];
+uniqueRestaurants.map(restaurantName => {
+    const filteredratingData = ratingData.filter(obj => obj.restaurant == restaurantName);
+    let outputobj = {
+        restaurant: restaurantName,
+        averageRating: filteredratingData.reduce((prev,next) => prev + next.rating,0)/ filteredratingData.length
+    }
+    arr.push(outputobj);
+});
+
+console.log(arr);
+
+//b  List of all restuarants with average rating greater than 4.
+
+const secondoutput = arr.filter(item => item.averageRating >= 4);
+console.log(secondoutput);
+
+     
+        
+
+
+    </script>
+</body>
+</html>
